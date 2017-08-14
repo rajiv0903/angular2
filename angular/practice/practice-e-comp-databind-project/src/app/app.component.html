@@ -1,0 +1,36 @@
+<div class="container">
+  <!--Property Binding and Event
+  serverCreated and blueprintCreated reside on cockpint TS-->
+  <app-cockpit 
+  (serverCreated)="onServerAdded($event)" 
+  (bprCreated)="onBlueprintAdded($event)"></app-cockpit>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12">
+      <!--Added to check ngOnChanges -->
+      <button class="btn btn-primary" (click) = "onChangeFirst()">Change First Element</button>
+      <!--Added to check onDestroy -->
+      <button class="btn btn-danger" (click) = "onDestroyFirst()">Destroy First Element</button>
+
+      <app-server-element 
+        *ngFor="let serverElement of serverElements; let i = index" 
+        [srvElement]="serverElement"
+        [name]="serverElement.name"
+        [srvElementIndex] = "i" 
+        (serverDestroyed) = "onSrvDestroyed($event)"> <!--Added to check onDestroy-->
+        <div class="row">
+          <div class="col-xs-8">
+            <!--Content Rendeing-->
+            <p #contentParagraph>
+              <strong *ngIf="serverElement.type === 'server'" style="color: red">{{ serverElement.content }}</strong>
+              <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>
+            </p>
+          </div>
+          <div class="col-xs-4">
+            <button class="btn btn-danger" (click) = "onDestroyed(i)">Destroy Element</button>
+          </div>
+        </div>
+      </app-server-element>
+    </div>
+  </div>
+</div>

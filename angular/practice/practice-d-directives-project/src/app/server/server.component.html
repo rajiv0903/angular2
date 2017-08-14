@@ -1,0 +1,19 @@
+
+<!--String Interpolation -->
+
+<!--<p>{{ 'Server' }} with ID {{serverId}}  is {{serverStatus}}<p>
+<hr/>-->
+<!--String Interpolation by calling a method-->
+
+<!--<p>{{ 'Server' }} with ID {{serverId}}  is {{getServerStatus()}}</p>-->
+
+<!-- ngStyle attribute directive with property binding-->
+<!--
+    ngClass - Key is the class name and value is whether to attached or not
+-->
+<p 
+[ngStyle] = "{backgroundColor: getColor()}"
+[ngClass] = "{online: serverStatus === 'online'}">
+{{ 'Server' }} with ID {{serverId}}  is {{getServerStatus()}}
+</p>
+
