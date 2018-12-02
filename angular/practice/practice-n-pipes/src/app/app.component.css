@@ -1,0 +1,13 @@
+.container {
+  margin-top: 50px;
+}
+.list-group-item-success{
+  background-color: green
+}
+.list-group-item-warning{
+  background-color: yellow;
+  color: blue
+}
+.list-group-item-danger{
+  background-color: red
+}
